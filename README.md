@@ -1,2 +1,2 @@
 # BiPredict
-Biclique based compounds-protein-interaction (CPI) prediction
+Biclique based compound-protein-interaction (CPI) prediction
