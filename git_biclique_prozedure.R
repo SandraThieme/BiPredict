@@ -25,24 +25,18 @@
 #' This function will compute the bicliques and output the statistics of these bicliques.
 #' If you want to get bicliques above a threshold, you can change the values of lleast and rleast.
 #' The input file should be tab delimited with number of vertices and edges at the head of the input file.
-#' If your input file does not have these values, you can use function bi.format to add these values to it.
-#' This package supports edge list and binary matrix file format.
-#' Two versions of algorithms are implemented in this function, you can choose either one to get bicliques.
+#' This package supports edge list.
 #'
 #' @param filename Input file name
 #' @param left_least Least number of left partite <default = 1>
 #' @param right_least Least number of right partite <default = 1>
-#' @param version Algorithm version <default = 1> [1|2]
+#' @param version Algorithm version <default = 1>
 #' @param filetype Input file format <default = 0>. 0-edge list, 1-binary matrix.
 #' @param getclique Get bicliques <default = 1>. If you set it to 0. you'll only get the statistics without bicliques.
 #' @param envir biclique environment
 #'
 #' @examples
 #' bicliques = bi.clique(system.file("extdata", "example1.el", package = "biclique"))
-#' bicliques = bi.clique(system.file("extdata", "example1.el", package = "biclique"), 3, 2)
-#' bicliques = bi.clique(system.file("extdata", "example4.bmat", package = "biclique"), filetype = 1)
-#' # check a biclique
-#' bicliques$biclique1
 #'
 #' @export
 
