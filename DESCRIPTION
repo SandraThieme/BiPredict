@@ -1,12 +1,10 @@
 Package: BiPredict
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Biclique based compound-protein-interaction (CPI) prediction
 Version: 0.1.0
 Author: Sandra Thieme
 Maintainer: The package maintainer <thieme@mpimp-golm.mpg.de>
-Description: 
-Prediction of interaction candidates in a CPI network based on an input edge list of known interactions. 
-    Use four spaces when indenting paragraphs within the Description.
+Description: Prediction of interaction candidates in a CPI network based on an input edge list of known interactions. 
 License: GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 Encoding: UTF-8
 LazyData: true
