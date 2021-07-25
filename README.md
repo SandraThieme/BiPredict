@@ -7,9 +7,9 @@ Bicliques consist of two types of nodes and edges connecting each node of differ
 
 Please find descrition and examples in the file bipredict.R You need both .R files in the same directory to run the predictions. 
 You also need to install the following dependencies (R packages):
-biclique
-igraph
-parallel
+biclique,
+igraph,
+parallel,
 data.table
 
 # Authors
