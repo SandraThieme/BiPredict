@@ -73,7 +73,7 @@ extend_biclique = function(my_bicliques,working_edge_list,CORES){
   return(my_bicliques)
 }
 
-#make edge list for extended bicliques
+# make edge list for extended bicliques
 edgelist_from_bicliques = function(extended_biclique,edge_list,CORES){
   print('make edgelist')
   library(parallel)
@@ -87,7 +87,7 @@ edgelist_from_bicliques = function(extended_biclique,edge_list,CORES){
   my_edge_list = do.call(rbind,mclapply(X = seq(1:length(extended_biclique)),FUN = do_it,mc.cores = CORES))
 
   # delete entries in extended edgelist which are already in original edgelist (previously known edges)
-  print(nrow(my_edge_list))
+  #print(nrow(my_edge_list))
   my_edge_list = unique(my_edge_list[,c('Var1','Var2')])
   colnames(my_edge_list) = colnames(edge_list)[1:2]
 
@@ -100,7 +100,7 @@ edgelist_from_bicliques = function(extended_biclique,edge_list,CORES){
   merged_edgelist = merged_edgelist[is.na(merged_edgelist$Var3),]
   merged_edgelist$Var3<-NULL
   my_edge_list = as.data.frame(merged_edgelist)
-  print(nrow(my_edge_list))
+  #print(nrow(my_edge_list))
   #colnames(my_edge_list) = c('chemical','ProteinID','biclique')
   #my_edge_list = unique(my_edge_list[,c('chemical','ProteinID')])
 
