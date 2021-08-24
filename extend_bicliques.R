@@ -6,6 +6,7 @@ library(igraph)
 
 # calculate bicliques using R package biclique, parallel if CORES > 1 for each connected component of the input network
 calculate_bicliques = function (CORES,EDGE_LIST,chemical_border = 2,protein_border = 2){
+  print('calculate bicliques')
   edge_list = EDGE_LIST
   edge_matrix = unique(as.matrix(edge_list[,c("chemical","ProteinID")]))
   rownames(edge_matrix)<-NULL
@@ -46,7 +47,7 @@ calculate_bicliques = function (CORES,EDGE_LIST,chemical_border = 2,protein_bord
 # extend bicliques = predict candidate interactions, parallel for the bicliques if CORES > 1
 extend_biclique = function(my_bicliques,working_edge_list,CORES){
   colnames(working_edge_list) = c('chemical','ProteinID')
-  print('start')
+  print('extend bicliques')
 
   # function for parallel interaction candidate calculation
   do_it = function(name){
@@ -74,6 +75,7 @@ extend_biclique = function(my_bicliques,working_edge_list,CORES){
 
 #make edge list for extended bicliques
 edgelist_from_bicliques = function(extended_biclique,edge_list,CORES){
+  print('make edgelist')
   library(parallel)
   do_it = function(i){
     temp_edge_list_one = expand.grid(extended_biclique[[i]]$left, extended_biclique[[i]]$right_candidates,stringsAsFactors =F)
@@ -85,8 +87,9 @@ edgelist_from_bicliques = function(extended_biclique,edge_list,CORES){
   my_edge_list = do.call(rbind,mclapply(X = seq(1:length(extended_biclique)),FUN = do_it,mc.cores = CORES))
 
   # delete entries in extended edgelist which are already in original edgelist (previously known edges)
-  #print(nrow(my_edge_list))
-  colnames(edge_list) = colnames(my_edge_list)[1:2]
+  print(nrow(my_edge_list))
+  my_edge_list = unique(my_edge_list[,c('Var1','Var2')])
+  colnames(my_edge_list) = colnames(edge_list)[1:2]
 
   library(data.table)
   my_edge_list = data.table(my_edge_list,key = colnames(my_edge_list[1:2]))
@@ -97,9 +100,9 @@ edgelist_from_bicliques = function(extended_biclique,edge_list,CORES){
   merged_edgelist = merged_edgelist[is.na(merged_edgelist$Var3),]
   merged_edgelist$Var3<-NULL
   my_edge_list = as.data.frame(merged_edgelist)
-  #print(nrow(my_edge_list))
-  colnames(my_edge_list) = c('chemical','ProteinID','biclique')
-  my_edge_list = unique(my_edge_list[,c('chemical','ProteinID')])
+  print(nrow(my_edge_list))
+  #colnames(my_edge_list) = c('chemical','ProteinID','biclique')
+  #my_edge_list = unique(my_edge_list[,c('chemical','ProteinID')])
 
   return(my_edge_list)
 }
