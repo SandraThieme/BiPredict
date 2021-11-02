@@ -30,6 +30,7 @@ CORES: Number of cores available for parallel computing (please check how much c
 
 ## Usage 
 ```
+source('bipredict.R')
 edge_list = read.table('ecoli_edgelist.txt',header = T)
 predicted_interactions_52 = bipredict(edge_list,chemical_border = 5,protein_border = 2,CORES = 1)
 write.table(predicted_interactions_52, file = 'my_predicted_interactions_52.txt', row.names = F)
