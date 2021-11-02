@@ -12,6 +12,12 @@ igraph
 parallel
 data.table 
 ```
+## Usage 
+```
+edge_list = read.table('ecoli_edgelist.txt',header = T)
+predicted_interactions_52 = bipredict(edge_list,chemical_border = 5,protein_border = 2,CORES = 1)
+
+```
 
 Please find descrition and examples in the file bipredict.R You need both .R files in the same directory to run the predictions. 
 You also need to install the following dependencies (R packages):
