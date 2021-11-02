@@ -16,8 +16,8 @@ data.table
 The function 'bipredict' will compute all bicliques of the input CPI network using the R package 'biclique', predict
 new interactions based on the biclique extension method and output a table of these new interactions.
 If you want to get only predictions for bicliques above a munimum c/p-biclique size,
-you can change the values of chemical_border and protein_border.
-The input file should be a edge list with two columns, one for compounds and one for proteis,
+you can change the values of chemical_border and protein_border (otherweise c=2, P=2 are used).
+The input file should be an edge list with two columns, one for compounds and one for proteis,
 with columnames "chemical" and "ProteinID" at the head of the input file. (see example 'ecoli_edgelist.txt')
 
 ## Parameters
