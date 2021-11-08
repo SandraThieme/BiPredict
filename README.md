@@ -6,7 +6,7 @@ Bicliques consist of two types of nodes and edges connecting each node of differ
 ![methods_skizze](https://user-images.githubusercontent.com/82212543/126770821-6b673a8d-7bdc-4036-b748-0adf11509ded.png)
 
 ## Requirements
-You need to install the following dependencie (R packages):
+You need to install the following dependencies (R packages):
 ```
 biclique
 igraph
@@ -16,16 +16,16 @@ data.table
 The function 'bipredict' will compute all bicliques of the input CPI network using the R package 'biclique', predict
 new interactions based on the biclique extension method and output a table of these new interactions.
 If you want to get only predictions for bicliques above a munimum c/p-biclique size,
-you can change the values of chemical_border and protein_border (otherweise c=2, P=2 are used).
+you can change the values of chemical_border and protein_border (otherweise c=2, p=2 are used).
 The input file should be an edge list with two columns, one for compounds and one for proteis,
-with columnames "chemical" and "ProteinID" at the head of the input file. (see example 'ecoli_edgelist.txt')
+with columnnames "chemical" and "ProteinID" at the head of the input file (see example 'ecoli_edgelist.txt').
 
 ## Parameters
 ```
 EDGE_LIST: Input edge list with two columns named: "chemical" and "ProteinID"
 chemical_border: Least number of compounds
 protein_border: Least number of proteins
-CORES: Number of cores available for parallel computing (please check how much cores you have available, or use 1, do not use all available cores)
+CORES: Number of cores available for parallel computing (please check how many cores you have available, or set to 1, do not use all available cores)
 ```
 
 ## Usage 
@@ -36,7 +36,7 @@ predicted_interactions_52 = bipredict(edge_list,chemical_border = 5,protein_bord
 write.table(predicted_interactions_52, file = 'my_predicted_interactions_52.txt', row.names = F)
 ```
 
-Please find descrition and examples in the file bipredict.R You need both .R files in the same directory to run the predictions.
+Please find descriptions and examples also in the file bipredict.R You need both .R files in the same directory to run the predictions.
 
 
 # Authors
