@@ -15,16 +15,16 @@ data.table
 ```
 The function 'bipredict' will compute all bicliques of the input CPI network using the R package 'biclique', predict
 new interactions based on the biclique extension method and output a table of these new interactions.
-If you want to get only predictions for bicliques above a munimum c/p-biclique size,
-you can change the values of chemical_border and protein_border (otherweise c=2, p=2 are used).
-The input file should be an edge list with two columns, one for compounds and one for proteis,
-with columnnames "chemical" and "ProteinID" at the head of the input file (see example 'ecoli_edgelist.txt').
+If you want to get only predictions for bicliques above a minimum c/p-biclique size,
+you can change the values of chemical_border and protein_border (otherwise c=2, p=2 are used).
+The input file should be an edge list with two columns, one for compounds and one for proteins,
+with columnnames "chemical" and "ProteinID" in the header of the input file (see example 'ecoli_edgelist.txt').
 
 ## Parameters
 ```
 EDGE_LIST: Input edge list with two columns named: "chemical" and "ProteinID"
-chemical_border: Least number of compounds
-protein_border: Least number of proteins
+chemical_border: Least number of compounds (parameter c, explained above)
+protein_border: Least number of proteins (parameter p, explained above)
 CORES: Number of cores available for parallel computing (please check how many cores you have available, or set to 1, do not use all available cores)
 ```
 
@@ -36,7 +36,7 @@ predicted_interactions_52 = bipredict(edge_list,chemical_border = 5,protein_bord
 write.table(predicted_interactions_52, file = 'my_predicted_interactions_52.txt', row.names = F)
 ```
 
-Please find descriptions and examples also in the file bipredict.R You need both .R files in the same directory to run the predictions.
+Please find descriptions and examples also in the file bipredict.R You need to have both .R files in the same directory to run the predictions.
 
 
 # Authors
