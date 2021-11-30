@@ -19,6 +19,7 @@ If you want to get only predictions for bicliques above a minimum c/p-biclique s
 you can change the values of chemical_border and protein_border (otherwise c=4, p=2 are used).
 The input file should be an edge list with two columns, one for compounds and one for proteins,
 with columnnames "chemical" and "ProteinID" in the header of the input file (see example 'ecoli_edgelist.txt').
+For large edge lists (>40,000 interactions), it is recommended to use the option 'Exclude_outliers = TRUE', which removes interactions to compounds or proteins which have a node degree of one, prior to biclique calculation. This step will reduce computational time, but at the cost that you will get a slightly lower number of predicted interactions for bicliques with only two nodes on any side of the biclique (c=2 or p=2). 
 
 ## Parameters
 ```
@@ -26,13 +27,14 @@ EDGE_LIST: Input edge list with two columns named: "chemical" and "ProteinID"
 chemical_border: Least number of compounds (parameter c, explained above)
 protein_border: Least number of proteins (parameter p, explained above)
 CORES: Number of cores available for parallel computing (please check how many cores you have available, or set to 1, do not use all available cores)
+Exclude_outliers: remove interactions to nodes with a node degree of one
 ```
 
 ## Usage 
 ```
 source('bipredict.R')
 edge_list = read.table('ecoli_edgelist.txt',header = T)
-predicted_interactions_52 = bipredict(edge_list,chemical_border = 5,protein_border = 2,CORES = 1)
+predicted_interactions_52 = bipredict(edge_list,chemical_border = 5,protein_border = 2,CORES = 1,Exclude_outliers=F)
 write.table(predicted_interactions_52, file = 'my_predicted_interactions_52.txt', row.names = F)
 ```
 
