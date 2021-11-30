@@ -5,7 +5,27 @@ library(igraph)
 
 
 # calculate bicliques using R package biclique, parallel if CORES > 1 for each connected component of the input network
-calculate_bicliques = function (CORES,EDGE_LIST,chemical_border = 4,protein_border = 2){
+calculate_bicliques = function (CORES,EDGE_LIST,chemical_border = 4,protein_border = 2,Exclude_outliers = F){
+
+  #
+  # remove degree one nodes from the network to reduce computing time for large networks
+  if (Exclude_outliers){
+    tab1 = EDGE_LIST
+    tab1$n = 1
+    tab2 = aggregate(n ~ chemical,data = tab1,sum)
+    tab3 = aggregate(n ~ ProteinID,data = tab1,sum)
+    unique_chemicals = tab2[which(tab2$n == 1),"chemical"]
+    unique_proteins = tab3[which(tab3$n == 1),"ProteinID"]
+    unique_interactions = EDGE_LIST[which(EDGE_LIST$chemical %in% unique_chemicals | EDGE_LIST$ProteinID %in% unique_proteins),]
+    EDGE_LIST = EDGE_LIST[-as.numeric(rownames(unique_interactions)),]
+    print(c('number of excluded unique proteins: ',length(unique_proteins)))
+    print(c('number of excluded unique compounds: ',length(unique_chemicals)))
+    print(c('number of interactions excluded: ',nrow(unique_interactions)))
+    print(c('size of edgelist: ',nrow(EDGE_LIST)))
+    rm(tab1,tab2,tab3)
+  }
+  #
+
   print('calculate bicliques')
   edge_list = EDGE_LIST
   edge_matrix = unique(as.matrix(edge_list[,c("chemical","ProteinID")]))
@@ -16,7 +36,7 @@ calculate_bicliques = function (CORES,EDGE_LIST,chemical_border = 4,protein_bord
 
   # consider only components with more than three members
   x = names(table(graph2_components$membership)[which(table(graph2_components$membership)>3)])
-  print(length(x))
+  #print(length(x))
   # function for parallel biclique calculation for each connected component
   do_it = function(i){
     PATH_TO_EDGELIST = tempfile(pattern = "", fileext = paste('_',i,".el",sep = ''))
