@@ -5,7 +5,7 @@ library(igraph)
 
 
 # calculate bicliques using R package biclique, parallel if CORES > 1 for each connected component of the input network
-calculate_bicliques = function (CORES,EDGE_LIST,chemical_border = 2,protein_border = 2){
+calculate_bicliques = function (CORES,EDGE_LIST,chemical_border = 4,protein_border = 2){
   print('calculate bicliques')
   edge_list = EDGE_LIST
   edge_matrix = unique(as.matrix(edge_list[,c("chemical","ProteinID")]))
