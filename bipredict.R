@@ -48,7 +48,7 @@ library(data.table)
 library(parallel)
 
 
-bipredict = function (EDGE_LIST,chemical_border = 2,protein_border = 2,CORES=1){
+bipredict = function (EDGE_LIST,chemical_border = 4,protein_border = 2,CORES=1){
   my_bicliques = calculate_bicliques(CORES,EDGE_LIST,chemical_border,protein_border)
   my_extended_bicliques = extend_biclique(my_bicliques,EDGE_LIST,CORES)
   predicted_interactions = edgelist_from_bicliques(my_extended_bicliques,EDGE_LIST,CORES)
