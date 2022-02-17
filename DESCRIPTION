@@ -8,3 +8,4 @@ Description: Prediction of interaction candidates in a CPI network based on an i
 License: GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 Encoding: UTF-8
 LazyData: true
+Reference: Sandra Thieme and Dirk Walther. Biclique extension as an effective approach to identify missing links in metabolic compound–protein interaction networks. Bioinformatics Advances, Volume 2, Issue 1, 2022, vbac001.
