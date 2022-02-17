@@ -31,6 +31,9 @@ Exclude_outliers: remove interactions to nodes with a node degree of one
 ```
 
 ## Usage 
+
+We provide an additional script to compute an input edge list based on the KEGG database, which can directly be used as input for BiPredict. Please find it here: https://github.com/SandraThieme/KEGG_edge_list
+
 ```
 source('bipredict.R')
 edge_list = read.table('ecoli_edgelist.txt',header = T)
