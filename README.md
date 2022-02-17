@@ -40,8 +40,17 @@ write.table(predicted_interactions_52, file = 'my_predicted_interactions_52.txt'
 
 Please find descriptions and examples also in the file bipredict.R You need to have both .R files in the same directory to run the predictions.
 
+## Reference
 
-# Authors
+Sandra Thieme, Dirk Walther
+
+Biclique extension as an effective approach to identify missing links in metabolic compound–protein interaction networks
+
+Bioinformatics Advances, Volume 2, Issue 1, 2022, vbac001
+
+https://doi.org/10.1093/bioadv/vbac001
+
+## Authors
 Sandra Thieme
 PhD Student
 AG Bioinformatics
