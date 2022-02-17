@@ -45,12 +45,9 @@ Please find descriptions and examples also in the file bipredict.R You need to h
 
 ## Reference
 
-Sandra Thieme, Dirk Walther
-
-Biclique extension as an effective approach to identify missing links in metabolic compound–protein interaction networks
-
+Sandra Thieme and Dirk Walther.
+Biclique extension as an effective approach to identify missing links in metabolic compound–protein interaction networks.
 Bioinformatics Advances, Volume 2, Issue 1, 2022, vbac001
-
 https://doi.org/10.1093/bioadv/vbac001
 
 ## Authors
